@@ -22,7 +22,11 @@ Field::Field(Point endPoints[4], Ball ball) {
 }
 
 void Field::hit(Point target, double power) {
-
+	if(power < 1 || power > 10) throw "Powera ti e nevaliden!";
+	double diffx = startingPoint.x - (startingPoint.x - target.x)*power;
+	double diffy = startingPoint.y - (startingPoint.y - target.y)*power;
+	ball.center.x = abs(diffx);
+	ball.center.y = abs(diffy);
 }
 
 ostream& operator<<(ostream& os, const Field& f) {
